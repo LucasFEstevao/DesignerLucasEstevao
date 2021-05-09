@@ -1,0 +1,11 @@
+.btn-pro {
+    transition: .2s ease-in-out;
+    border-radius: 5px;
+    border: 1px solid $white;
+    background: $primary;
+
+    &.active {
+        color: $primary !important;
+        background: $white;
+    }
+}
