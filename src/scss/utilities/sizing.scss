@@ -1,0 +1,11 @@
+.vh {
+    &-first-section {
+        height: calc(100vh - 90px);
+    }
+}
+
+.w {
+    &-60 {
+        width: 60%;
+    }
+}

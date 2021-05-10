@@ -10,7 +10,7 @@ const routers = new class Router {
 
     allRoutes() {
         return [
-            { id: '', url: 'src/html/pages/home.html' },
+            { id: '', url: 'src/html/pages/quemSouEu.html' },
             { id: 'quemSouEu', url: 'src/html/pages/quemSouEu.html' },
             { id: 'portifolio', url: 'src/html/pages/portifolio.html' },
             { id: 'contato', url: 'src/html/pages/contato.html' },

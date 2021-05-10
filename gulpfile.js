@@ -18,7 +18,7 @@ const pathOutCss = pathOutTheme + '/css';
 const pathInJs = pathInTheme + '/js/**/*.js';
 const pathOutJs = pathOutTheme + '/js';
 
-const pathInLibs = [pathInTheme + '/lib/**/*.js', pathInTheme + '/lib/**/*.json'];
+const pathInLibs = [pathInTheme + '/lib/**/*.js', pathInTheme + '/lib/**/*.json', pathInTheme + '/lib/**/*.css', pathInTheme + '/lib/**/*.woff', pathInTheme + '/lib/**/*.woff2'];
 const pathOutLibs = pathOutTheme + '/lib';
 
 const pathInImgs = pathInTheme + '/images/**/*.';
@@ -28,16 +28,16 @@ const pathIconsIn = [pathInTheme + '/icons/*.svg'];
 const pathIconsOut = pathInTheme + '/fonts/icon-font/';
 const pathTemplateIcons = pathInTheme + '/assets/icon_template.scss';
 
-gulp.task('style', function () {
+gulp.task('style', function() {
     return gulp.src(pathInCss)
-    .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(sass().on('error', sass.logError))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest(pathOutCss))
-    .pipe(browserSync.stream());
+        .pipe(sourcemaps.init({ loadMaps: true }))
+        .pipe(sass().on('error', sass.logError))
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(pathOutCss))
+        .pipe(browserSync.stream());
 });
 
-gulp.task('moveJs', function () {
+gulp.task('moveJs', function() {
     return pump([
         gulp.src(pathInJs),
         gulp.dest(pathOutJs),
@@ -45,44 +45,43 @@ gulp.task('moveJs', function () {
     ]);
 });
 
-gulp.task('libraries', function () {
+gulp.task('libraries', function() {
     return pump([
         gulp.src(pathInLibs),
         gulp.dest(pathOutLibs),
     ]);
 });
 
-gulp.task('clean', function () {
+gulp.task('clean', function() {
     return del.sync(['./dist']);
 });
 
-gulp.task('images', function () {
+gulp.task('images', function() {
     return pump([
         gulp.src(pathInImgs + '+(png|jpg|gif|svg|ico)'),
         gulp.dest(pathOutImgs)
     ]);
 });
 
-gulp.task('default', function () {
+gulp.task('default', function() {
     runSequence('clean', 'libraries', 'images', 'style', 'moveJs');
 });
 
 
-gulp.task('watch', function () {
+gulp.task('watch', function() {
     livereload.listen();
     gulp.watch(watchScss, ['style']);
     gulp.watch(pathInJs, ['watchJS']);
 });
 
-gulp.task('start', function () {
+gulp.task('start', function() {
     browserSync.init({
         server: {
             baseDir: './'
         }
     });
-    
+
     gulp.watch(watchScss, ['style']);
     gulp.watch(pathInJs, ['moveJs']);
     gulp.watch(['*.html', 'src/**/*.html']).on('change', browserSync.reload);
 });
-

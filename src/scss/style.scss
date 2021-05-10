@@ -1,12 +1,13 @@
-
 @import "./config/colors.scss";
+@import "./config/spacers.scss";
+@import "./config/fontSize.scss";
 @import "../lib/bootstrap-5.0.0/scss/bootstrap.scss";
-
 @import "./utilities/scrollbar.scss";
+@import "./utilities/background.scss";
 @import "./utilities/cursor.scss";
-
+@import "./utilities/sizing.scss";
+@import "./components/container.scss";
 @import "./components/loader.scss";
 @import "./components/navbar.scss";
 @import "./components/buttons.scss";
-
 @import "./base.scss";
